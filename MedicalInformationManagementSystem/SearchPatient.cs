@@ -45,5 +45,10 @@ namespace HealthInformaticSystem
 
            
         }
+
+        private void SearchPatient_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

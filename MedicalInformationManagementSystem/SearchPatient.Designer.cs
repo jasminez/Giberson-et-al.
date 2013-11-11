@@ -72,6 +72,7 @@
             this.Name = "SearchPatient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearhPatient";
+            this.Load += new System.EventHandler(this.SearchPatient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
