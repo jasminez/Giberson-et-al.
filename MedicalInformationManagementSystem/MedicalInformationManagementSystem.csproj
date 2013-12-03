@@ -11,6 +11,21 @@
     <AssemblyName>HealthInformaticSystem</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,45 +64,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GibersonDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GibersonDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="NewPatient_Search.cs">
+    <Compile Include="Forms\EnterAssesment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewPatient_Search.Designer.cs">
-      <DependentUpon>NewPatient_Search.cs</DependentUpon>
+    <Compile Include="Forms\EnterAssesment.designer.cs">
+      <DependentUpon>EnterAssesment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PatientSearch.designer.cs">
+      <DependentUpon>PatientSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="UpdatePatientDemography.cs">
+    <Compile Include="Forms\UpdatePatientDemography.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdatePatientDemography.designer.cs">
+    <Compile Include="Forms\UpdatePatientDemography.designer.cs">
       <DependentUpon>UpdatePatientDemography.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnector.cs" />
-    <Compile Include="SearchPatient.cs">
+    <Compile Include="Forms\SearchPatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchPatient.Designer.cs">
+    <Compile Include="Forms\SearchPatient.Designer.cs">
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewEMR.cs">
+    <Compile Include="Forms\ViewEMR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewEMR.Designer.cs">
+    <Compile Include="Forms\ViewEMR.Designer.cs">
       <DependentUpon>ViewEMR.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="NewPatient_Search.resx">
-      <DependentUpon>NewPatient_Search.cs</DependentUpon>
+    <Compile Include="SearchPatientByIdDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SearchPatientByIdDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SearchPatientByNameDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SearchPatientByNameDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\EnterAssesment.resx">
+      <DependentUpon>EnterAssesment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdatePatientDemography.resx">
+    <EmbeddedResource Include="Forms\PatientSearch.resx">
+      <DependentUpon>PatientSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdatePatientDemography.resx">
       <DependentUpon>UpdatePatientDemography.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchPatient.resx">
+    <EmbeddedResource Include="Forms\SearchPatient.resx">
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -99,20 +128,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ViewEMR.resx">
+    <EmbeddedResource Include="Forms\ViewEMR.resx">
       <DependentUpon>ViewEMR.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="GibersonDataSet1.xsc">
-      <DependentUpon>GibersonDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="GibersonDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GibersonDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GibersonDataSet1.xss">
-      <DependentUpon>GibersonDataSet1.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -122,9 +140,48 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SearchPatientByIdDataSet.xsc">
+      <DependentUpon>SearchPatientByIdDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SearchPatientByIdDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SearchPatientByIdDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SearchPatientByIdDataSet.xss">
+      <DependentUpon>SearchPatientByIdDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SearchPatientByNameDataSet.xsc">
+      <DependentUpon>SearchPatientByNameDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SearchPatientByNameDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SearchPatientByNameDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SearchPatientByNameDataSet.xss">
+      <DependentUpon>SearchPatientByNameDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

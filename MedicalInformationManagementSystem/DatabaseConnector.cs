@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HealthInformaticSystem
 {
@@ -25,11 +26,11 @@ namespace HealthInformaticSystem
             if (conn == null)
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "bang.Giberson"; // <-- change this to your ms sql server
+                builder.DataSource = "=JASMIN.Giberson"; // <-- change this to your ms sql server
                 builder.InitialCatalog = "Giberson";
                 builder.IntegratedSecurity = true;
 
-                conn = new SqlConnection("Data Source=BANG\\;Initial Catalog=Giberson;Integrated Security=True");
+                conn = new SqlConnection("Data Source=JASMIN;Initial Catalog=Giberson;Integrated Security=True");
             }
             return conn;
         }
@@ -62,6 +63,46 @@ namespace HealthInformaticSystem
 
             conn.Close();
             return table;
+        }
+
+        public SqlConnection getConn()
+        {
+            if (conn == null)
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "=JASMIN.Giberson"; // <-- change this to your ms sql server
+                builder.InitialCatalog = "Giberson";
+                builder.IntegratedSecurity = true;
+
+                conn = new SqlConnection("Data Source=JASMIN;Initial Catalog=Giberson;Integrated Security=True");
+            }
+            return conn;
+        }
+        public bool putdata(string sp,Dictionary<String,String> parameters)
+        {
+            bool returntype=true;
+            SqlConnection conn = getConn();
+            SqlCommand cmd = new SqlCommand(sp, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (KeyValuePair<string, string> pair in parameters)
+            {
+                cmd.Parameters.Add(pair.Key,pair.Value);
+            }
+            cmd.Prepare();
+
+            conn.Open();
+           
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.ToString());
+                returntype = false;   
+            }
+            conn.Close();
+            return returntype;
         }
     }
 }
